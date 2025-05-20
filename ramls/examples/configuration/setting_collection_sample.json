@@ -1,0 +1,12 @@
+{
+  "settings": [
+    {
+      "id": "records.page.size",
+      "value": 50,
+      "description": "Number of records to display per page",
+      "type": "INTEGER",
+      "groupId": "audit.inventory"
+    }
+  ],
+  "totalRecords": 1
+}

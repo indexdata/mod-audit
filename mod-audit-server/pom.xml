@@ -2,13 +2,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <artifactId>mod-audit-server</artifactId>
-  <version>2.7.1-SNAPSHOT</version>
+  <version>3.0.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <parent>
     <artifactId>mod-audit</artifactId>
     <groupId>org.folio</groupId>
-    <version>2.7.1-SNAPSHOT</version>
+    <version>3.0.0-SNAPSHOT</version>
   </parent>
 
   <licenses>
@@ -19,11 +19,16 @@
   </licenses>
 
   <properties>
-    <json.path.version>2.7.0</json.path.version>
-    <mockito-inline.version>4.9.0</mockito-inline.version>
+    <json.path.version>2.9.0</json.path.version>
+    <mockito.version>5.16.0</mockito.version>
     <ramlfiles_path>${project.parent.basedir}/ramls</ramlfiles_path>
-    <awaitility.version>4.2.0</awaitility.version>
+    <awaitility.version>4.3.0</awaitility.version>
     <argLine />
+    <mapstruct.version>1.6.3</mapstruct.version>
+    <lombok.version>1.18.36</lombok.version>
+    <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
+    <assertj.version>3.27.3</assertj.version>
+    <javers.version>7.8.0</javers.version>
   </properties>
 
   <dependencies>
@@ -39,23 +44,28 @@
       </exclusions>
     </dependency>
     <dependency>
-      <groupId>org.folio</groupId>
-      <artifactId>folio-kafka-wrapper</artifactId>
-      <version>3.0.0-SNAPSHOT</version>
+      <groupId>org.javers</groupId>
+      <artifactId>javers-core</artifactId>
+      <version>${javers.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.apache.kafka</groupId>
-      <artifactId>kafka-clients</artifactId>
-      <version>3.1.0</version>
+      <groupId>org.folio</groupId>
+      <artifactId>folio-kafka-wrapper</artifactId>
+      <version>3.3.0</version>
     </dependency>
     <dependency>
       <groupId>io.vertx</groupId>
       <artifactId>vertx-kafka-client</artifactId>
     </dependency>
     <dependency>
+      <groupId>org.mapstruct</groupId>
+      <artifactId>mapstruct</artifactId>
+      <version>${mapstruct.version}</version>
+    </dependency>
+    <dependency>
       <groupId>net.mguenther.kafka</groupId>
       <artifactId>kafka-junit</artifactId>
-      <version>3.1.0</version>
+      <version>3.6.0</version>
       <scope>test</scope>
       <exclusions>
         <exclusion>
@@ -77,12 +87,7 @@
       <artifactId>domain-models-runtime</artifactId>
       <version>${raml-module-builder.version}</version>
     </dependency>
-    <dependency>
-      <groupId>org.mockito</groupId>
-      <artifactId>mockito-inline</artifactId>
-      <version>${mockito-inline.version}</version>
-      <scope>test</scope>
-    </dependency>
+
     <dependency>
       <groupId>org.folio</groupId>
       <artifactId>domain-models-api-interfaces</artifactId>
@@ -108,7 +113,7 @@
     <dependency>
       <groupId>org.junit.platform</groupId>
       <artifactId>junit-platform-runner</artifactId>
-      <version>1.4.2</version>
+      <version>1.12.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -139,6 +144,23 @@
       <version>${awaitility.version}</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <version>${mockito.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-junit-jupiter</artifactId>
+      <version>${mockito.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <version>${assertj.version}</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -153,17 +175,34 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
+        <version>3.14.0</version>
         <configuration>
-          <release>17</release>
+          <release>21</release>
           <encoding>UTF-8</encoding>
+          <annotationProcessorPaths>
+            <path>
+              <groupId>org.mapstruct</groupId>
+              <artifactId>mapstruct-processor</artifactId>
+              <version>${mapstruct.version}</version>
+            </path>
+            <path>
+              <groupId>org.projectlombok</groupId>
+              <artifactId>lombok</artifactId>
+              <version>${lombok.version}</version>
+            </path>
+            <path>
+              <groupId>org.projectlombok</groupId>
+              <artifactId>lombok-mapstruct-binding</artifactId>
+              <version>${lombok-mapstruct-binding.version}</version>
+            </path>
+          </annotationProcessorPaths>
         </configuration>
       </plugin>
 
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
-        <version>3.2.0</version>
+        <version>3.6.0</version>
         <executions>
           <execution>
             <id>add_generated_sources_folder</id>
@@ -197,7 +236,7 @@
       <plugin>
         <groupId>org.jsonschema2pojo</groupId>
         <artifactId>jsonschema2pojo-maven-plugin</artifactId>
-        <version>1.1.0</version>
+        <version>1.2.2</version>
         <configuration>
           <includes>
             <include>*.json</include>
@@ -221,11 +260,11 @@
       <plugin>
         <groupId>dev.aspectj</groupId>
         <artifactId>aspectj-maven-plugin</artifactId>
-        <version>1.13.1</version>
+        <version>1.14</version>
         <configuration>
           <verbose>true</verbose>
           <showWeaveInfo>false</showWeaveInfo>
-          <release>17</release>
+          <release>21</release>
           <includes>
             <include>**/impl/*.java</include>
             <include>**/*.aj</include>
@@ -266,7 +305,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-resources-plugin</artifactId>
-        <version>3.1.0</version>
+        <version>3.3.1</version>
         <executions>
           <execution>
             <id>copy-resources</id>
@@ -310,7 +349,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-antrun-plugin</artifactId>
-        <version>3.0.0</version>
+        <version>3.1.0</version>
         <executions>
           <execution>
             <phase>prepare-package</phase>
@@ -334,7 +373,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
-        <version>3.2.2</version>
+        <version>3.6.0</version>
         <executions>
           <execution>
             <phase>package</phase>
@@ -377,7 +416,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-release-plugin</artifactId>
-        <version>2.5.3</version>
+        <version>3.1.1</version>
         <configuration>
           <preparationGoals>clean verify</preparationGoals>
           <tagNameFormat>v@{project.version}</tagNameFormat>

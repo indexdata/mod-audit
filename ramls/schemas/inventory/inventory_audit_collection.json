@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Inventory audit item",
+  "type": "object",
+  "properties": {
+    "inventoryAuditItems": {
+      "description": "List of inventory audit items",
+      "type": "array",
+      "id": "inventoryAuditItems",
+      "items": {
+        "type": "object",
+        "$ref": "inventory_audit_item.json"
+      }
+    },
+    "totalRecords": {
+      "description": "Total number of records",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "inventoryAuditItems"
+  ],
+  "additionalProperties": false
+}

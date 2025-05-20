@@ -1,3 +1,74 @@
+## 3.0.0-SNAPSHOT 2025-mm-dd
+* [MODAUD-XXX](https://folio-org.atlassian.net/browse/MODAUD-XXX) - Description
+
+## 2.11.1 2025-04-15 
+* [MODAUD-250](https://folio-org.atlassian.net/browse/MODAUD-250) - Version history of "MARC" records is not tracked
+
+## 2.11.0 2025-03-14
+* [MODAUD-205](https://folio-org.atlassian.net/browse/MODAUD-205) - Consume domain event for MARC_BIB and MARC_AUTHORITY
+* [MODAUD-231](https://folio-org.atlassian.net/browse/MODAUD-231) - Handle inventory shadow copy events
+* [MODAUD-214](https://folio-org.atlassian.net/browse/MODAUD-214) - Rest Endpoint for history of MARC_BIB
+* [MODAUD-210](https://folio-org.atlassian.net/browse/MODAUD-210) - Create scheduled job to delete expired audit records
+* [MODAUD-235](https://folio-org.atlassian.net/browse/MODAUD-235) - Extend scheduled job with old empty partitions deletion, new partitions creation
+* [MODAUD-206](https://folio-org.atlassian.net/browse/MODAUD-206) - [Instance Audit] Consume domain event
+* [MODAUD-204](https://folio-org.atlassian.net/browse/MODAUD-204) - [Holdings Audit] Consume domain event
+* [MODAUD-203](https://folio-org.atlassian.net/browse/MODAUD-203) - [Item Audit] Consume domain event
+* [MODAUD-222](https://folio-org.atlassian.net/browse/MODAUD-222) - Support settings to configure number of cards in version history
+* [MODAUD-215](https://folio-org.atlassian.net/browse/MODAUD-215) - [Instance Audit] Rest Endpoint for history
+* [MODAUD-213](https://folio-org.atlassian.net/browse/MODAUD-213) - [Holding Audit] Rest Endpoint for history
+* [MODAUD-219](https://folio-org.atlassian.net/browse/MODAUD-219) - [Instance, Holdings, Item Audit] Calculate entity diff on event consumption
+* [MODAUD-212](https://folio-org.atlassian.net/browse/MODAUD-212) - [Item Audit] Rest Endpoint for history
+* [MODAUD-230](https://folio-org.atlassian.net/browse/MODAUD-230) - Issue with mod-audit module migration
+* [MODAUD-207](https://folio-org.atlassian.net/browse/MODAUD-207) - [Instance/Item/Holding/Bib/Authority Audit] Retention Period Configuration
+* [MODAUD-209](https://folio-org.atlassian.net/browse/MODAUD-209) - [Instance/Item/Holding/Bib/Authority Audit] Feature Flag Configuration
+* [MODAUD-234](https://folio-org.atlassian.net/browse/MODAUD-234) - Update request for configuration entries should be protected by separate permissions
+* [MODAUD-229](https://folio-org.atlassian.net/browse/MODAUD-229) - Support version counter in Version history pane
+* [MODAUD-225](https://folio-org.atlassian.net/browse/MODAUD-225) - Handle Repeatable Fields for MARC_BIB and MARC_AUTHORITY Audit Events
+* [MODAUD-236](https://folio-org.atlassian.net/browse/MODAUD-236) - Support version counter in Version history pane for MARC records
+* [MODAUD-228](https://folio-org.atlassian.net/browse/MODAUD-228) - "400" error is returned by GET and PUT for view and update number of cards in version history config on Eureka environments
+* [MODAUD-237](https://folio-org.atlassian.net/browse/MODAUD-237) - Sub-partitions tables have wrong date ranges
+* [FOLIO-4233](https://folio-org.atlassian.net/browse/FOLIO-4233) - Update to mod-audit Java 21
+* [MODAUD-238](https://folio-org.atlassian.net/browse/MODAUD-238) - Make adjustments for MARC repeatable fields diff calculation and format the values
+* [MODAUD-240](https://folio-org.atlassian.net/browse/MODAUD-240) - 999 subfield order is changed creating a log entry of "Updated" in MARC authority version history
+
+## 2.10.2 2025-01-10
+
+* [MODAUD-216](https://folio-org.atlassian.net/browse/MODAUD-199) - Remove PII from mod-audit logs
+
+## 2.10.1 2024-11-19
+
+* [MODAUD-199](https://folio-org.atlassian.net/browse/MODAUD-199) - Make pubsub permission changes.
+
+
+## 2.10.0 2024-10-30
+
+* [MODAUD-185](https://folio-org.atlassian.net/browse/MODAUD-185) - Unpin jackson fixing Number Parse DoS (PRISMA-2023-0067)
+* [MODAUD-186](https://folio-org.atlassian.net/browse/MODAUD-186) - Upgrade `holdings-storage` to 7.0
+* [MODAUD-187](https://folio-org.atlassian.net/browse/MODAUD-187) - Review and cleanup Module Descriptors for mod-audit
+* [MODAUD-189](https://folio-org.atlassian.net/browse/MODAUD-189) - Upgrade `inventory` to 14.0
+* [MODAUD-190](https://folio-org.atlassian.net/browse/MODAUD-190) - Upgrade `holdings-storage` to 8.0
+* [MODAUD-192](https://folio-org.atlassian.net/browse/MODAUD-192) - Upgrade RMB version to V.35.3.0
+* [MODPUBSUB-301](https://folio-org.atlassian.net/browse/MODPUBSUB-301) - Revert permission changes for MODPUBSUB-301
+
+## 2.9.0 2024-03-21
+
+* [MODAUD-174](https://issues.folio.org/browse/MODAUD-174) - Consume piece change events and implement endpoints
+* [MODAUD-176](https://issues.folio.org/browse/MODAUD-176) - Check-ins are automatically backdated to 5 hours later (DUNY/Dominican)
+* [MODAUD-177](https://issues.folio.org/browse/MODAUD-177) - Link on a virtual item is available in circ log if fees/fines is applied
+* [MODAUD-180](https://issues.folio.org/browse/MODAUD-180) - Modify SQL query for /status-change-history to return records if claimingInterval changed
+* [MODAUD-181](https://issues.folio.org/browse/MODAUD-181) - Make additional properties to true in user.json
+* [MODAUD-183](https://issues.folio.org/browse/MODAUD-183) - mod-audit Quesnelia 2024 R1 - RMB v35.2.x update
+* [FOLIO-3944](https://issues.folio.org/browse/FOLIO-3944) - Upgrade the Actions used by API-related GitHub Workflows
+
+## 2.8.0 2023-10-11
+
+* [MODAUD-110](https://issues.folio.org/browse/MODAUD-110) - Logging improvement
+* [MODAUD-161](https://issues.folio.org/browse/MODAUD-161) - Use GitHub Workflows api-lint and api-schema-lint and api-doc
+* [MODAUD-164](https://issues.folio.org/browse/MODAUD-164) - Allow action types for loan info
+* [MODAUD-166](https://issues.folio.org/browse/MODAUD-166) - Update to Java 17
+* [MODAUD-167](https://issues.folio.org/browse/MODAUD-167) - Upgrade folio-kafka-wrapper to 3.0.0 version
+* [MODAUD-168](https://issues.folio.org/browse/MODAUD-168) - Incorrect Patron name shown in Circulation log as source for Change Due Date
+
 ## 2.7.0 2023-02-23
 
 * [MODAUD-137](https://issues.folio.org/browse/MODAUD-137) - Logging improvement - Configuration
